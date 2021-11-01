@@ -12,19 +12,24 @@ const mockAssistant = {
   avatar: "https://ui-avatars.com/api/?name=Mary Doe",
 };
 const mockUser = {
-    _id: '617edbbc25fbe2e8d7fa795d',
-    name: "Rafael",
-    surname: "Limaa",
-    avatar: "https://res.cloudinary.com/koulin/image/upload/v1635704994/OneHealth/patient/avatar/ti7wxty5xc2znimy34ca.png",
-    email: "drdverzola@gmail.com",
-    googleId: "114978369901583530553",
-    phone_primary: "7895144568",
-  };
+  _id: '617edbbc25fbe2e8d7fa795d',
+  name: "Rafael",
+  surname: "Limaa",
+  avatar: "https://res.cloudinary.com/koulin/image/upload/v1635704994/OneHealth/patient/avatar/ti7wxty5xc2znimy34ca.png",
+  email: "drdverzola@gmail.com",
+  googleId: "114978369901583530553",
+  phone_primary: "7895144568",
+};
 
 // Get list of waiting users
 // Open chat
-
+const mockMessage = {
+  senderID: '617fc01dd1832ee3bb069737',
+  senderRole: 'assistant',
+  text: `I'm patatine hello!`,
+}
 function Chat() {
+  const [roomId, setRoomId] = useState(null)
 
 
 
@@ -33,38 +38,55 @@ function Chat() {
     });
 
     const updateUserList = (payload) => {
-        
-      }
-    const onUserChat = (payload) => {
-       
-      }
-    
-    socket.on("waitingUsers", updateUserList) 
-    socket.on("onUserChat", onUserChat) 
 
-    return ()=>{
-        socket.off("waitingUsers", updateUserList)
-        socket.off("onUserChat", onUserChat)
+    }
+    const onUserChat = (payload) => {
+      const {roomID} = payload
+      setRoomId(roomID.toString())
     }
 
-  },[]);
+    const updateChatMessages = (payload) =>{
+      console.log('recipientMessage', payload)
+
+    }
+    socket.on('recipientMessage', updateChatMessages)
+    
+    socket.on("waitingUsers", updateUserList)
+    socket.on("onUserChat", onUserChat)
+    
+    return () => {
+      socket.off("waitingUsers", updateUserList)
+      socket.off("onUserChat", onUserChat)
+      socket.off('recipientMessage', updateChatMessages)
+    }
+
+  }, []);
 
   const logOnChats = (assistant) => {
     socket.emit("newAssistant", assistant);
   };
   const openChatWithUser = (user) => {
-      const payload = {
-          user: user,
-          assistant:mockAssistant
-      }
+    const payload = {
+      user: user,
+      assistant: mockAssistant
+    }
     socket.emit("openRoomWithUser", payload);
   };
-  
+
+  const sendMessage = (message, roomID)=>{
+    const payload = {
+      message,
+      roomID: roomID
+    }
+    socket.emit('newMessage',payload)
+  }
+
   return (
     <div>
       <h1>Chat</h1>
       <button onClick={() => logOnChats(mockAssistant)}>Check user waiting List</button>
       <button onClick={() => openChatWithUser(mockUser)}>Open chat with user</button>
+      <button onClick={() => sendMessage(mockMessage, roomId)}>Send message</button>
     </div>
   );
 }
