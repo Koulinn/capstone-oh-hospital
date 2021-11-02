@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import UserList from "../../components/Users/UserList";
+
+
+
 
 const ADDRESS = process.env.REACT_APP_API_URL;
 export const socket = io(ADDRESS, { transports: ["websocket"] });
@@ -11,6 +16,7 @@ const mockAssistant = {
   role: "assistant",
   avatar: "https://ui-avatars.com/api/?name=Mary Doe",
 };
+
 const mockUser = {
   _id: '617edbbc25fbe2e8d7fa795d',
   name: "Rafael",
@@ -20,6 +26,7 @@ const mockUser = {
   googleId: "114978369901583530553",
   phone_primary: "7895144568",
 };
+const waitingList= [mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,]
 
 // Get list of waiting users
 // Open chat
@@ -41,19 +48,19 @@ function Chat() {
 
     }
     const onUserChat = (payload) => {
-      const {roomID} = payload
+      const { roomID } = payload
       setRoomId(roomID.toString())
     }
 
-    const updateChatMessages = (payload) =>{
+    const updateChatMessages = (payload) => {
       console.log('recipientMessage', payload)
 
     }
     socket.on('recipientMessage', updateChatMessages)
-    
+
     socket.on("waitingUsers", updateUserList)
     socket.on("onUserChat", onUserChat)
-    
+
     return () => {
       socket.off("waitingUsers", updateUserList)
       socket.off("onUserChat", onUserChat)
@@ -73,21 +80,35 @@ function Chat() {
     socket.emit("openRoomWithUser", payload);
   };
 
-  const sendMessage = (message, roomID)=>{
+  const sendMessage = (message, roomID) => {
     const payload = {
       message,
       roomID: roomID
     }
-    socket.emit('newMessage',payload)
+    socket.emit('newMessage', payload)
   }
 
+
+  // <button onClick={() => logOnChats(mockAssistant)}>Check user waiting List</button>
+  // <button onClick={() => openChatWithUser(mockUser)}>Open chat with user</button>
+  // <button onClick={() => sendMessage(mockMessage, roomId)}>Send message</button>
   return (
-    <div>
-      <h1>Chat</h1>
-      <button onClick={() => logOnChats(mockAssistant)}>Check user waiting List</button>
-      <button onClick={() => openChatWithUser(mockUser)}>Open chat with user</button>
-      <button onClick={() => sendMessage(mockMessage, roomId)}>Send message</button>
-    </div>
+    <Container className="box-shadow mt-5" >
+      <Row>
+        <div className="userQueue-wrapper col-4 border-right pt-5 px-0">
+          <div className=" mb-3">
+            <header>
+              <h4 className="text-center">User Queue</h4>
+            </header>
+          </div>
+          <div className="waitingList-wrapper">
+            <UserList userWaitingList={waitingList}/>
+          </div>
+        </div>
+        <div className="col-12"></div>
+      </Row>
+
+    </Container>
   );
 }
 

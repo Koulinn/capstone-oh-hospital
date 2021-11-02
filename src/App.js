@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client'
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Chat from './views/Chat/Chat';
+import {Container} from 'react-bootstrap'
 
 
 
@@ -10,14 +11,16 @@ import Chat from './views/Chat/Chat';
 function App() {
 
   return (
-   
 
-        <Router>
-         
-          <Route path="/" exact render={(routerProps) =>
-            <Chat {...routerProps} />}>
-          </Route>
-        </Router>
+    <Container fluid>
+
+      <Router>
+
+        <Route path="/" exact render={(routerProps) =>
+          <Chat {...routerProps} />}>
+        </Route>
+      </Router>
+    </Container>
   )
 }
 
