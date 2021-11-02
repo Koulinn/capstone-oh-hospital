@@ -3,6 +3,8 @@ import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import UserList from "../../components/Users/UserList";
+import Avatar from '@mui/material/Avatar';
+import ChatCard from "../../components/Chat/ChatCard";
 
 
 
@@ -26,7 +28,7 @@ const mockUser = {
   googleId: "114978369901583530553",
   phone_primary: "7895144568",
 };
-const waitingList= [mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,mockUser,]
+const waitingList = [mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser,]
 
 // Get list of waiting users
 // Open chat
@@ -95,17 +97,46 @@ function Chat() {
   return (
     <Container className="box-shadow mt-5" >
       <Row>
-        <div className="userQueue-wrapper col-4 border-right pt-5 px-0">
-          <div className=" mb-3">
+        <div className="userQueue-wrapper col-4 border-right pt-3 px-0">
+          <div className=" mb-4">
             <header>
               <h4 className="text-center">User Queue</h4>
             </header>
           </div>
-          <div className="waitingList-wrapper">
-            <UserList userWaitingList={waitingList}/>
+          <div className="waitingList-wrapper scrollable-Area">
+            <UserList userWaitingList={waitingList} />
           </div>
         </div>
-        <div className="col-12"></div>
+        <div className="col-8 chat-wrapper px-0">
+          <div className=" chatUserMeta-wrapper d-flex align-items-center p-3">
+            <div>
+              <Avatar alt="Remy Sharp" src={mockUser.avatar} />
+            </div>
+            <div className="ml-3">
+              <h6>{`${mockUser.name} ${mockUser.surname}`}</h6>
+            </div>
+          </div>
+          <div className="scrollable-Area p-3 row">
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard user={true}/>
+            <ChatCard/>
+            <ChatCard/>
+       
+          </div>
+          <div>
+            input
+          </div>
+
+        </div>
       </Row>
 
     </Container>

@@ -10,12 +10,15 @@ html {
 .box-shadow {
   background: #ffffff;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.15);
-  border-radius: 20px; 
+  border-radius: 20px;
+  overflow: hidden; 
 }
 
-.waiting{
+.scrollable-Area{
   height: 640px;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* width */
@@ -37,3 +40,15 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
     }
+
+.chat-wrapper{
+  .chatUserMeta-wrapper{
+    background-color: rgb(172, 169, 169);
+  }
+}
+
+.userQueue-wrapper{
+  h4{
+    line-height: 31px;
+  }
+}
