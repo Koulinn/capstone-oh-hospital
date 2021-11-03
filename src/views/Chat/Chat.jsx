@@ -44,6 +44,7 @@ const mockMessage = {
 function Chat() {
   const [roomId, setRoomId] = useState(null)
   const [waitingList, setWaitingUsers] = useState([])
+  const [currentChat, setCurrentChat] = useState(null)
 
 
 
@@ -108,8 +109,9 @@ function Chat() {
       <Row>
         <UserQueueColumn 
         waitingList={waitingList}
+        setCurrentChat={setCurrentChat}
         />
-        <ChatColumn mockUser={mockUser}/>
+        <ChatColumn currentChat={currentChat}/>
       </Row>
 
     </Container>

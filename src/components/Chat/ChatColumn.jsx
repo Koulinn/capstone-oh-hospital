@@ -5,11 +5,11 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ChatHeader from './ChatHeader';
 import ChatBottom from './ChatBottom';
 
-function ChatColumn({mockUser}) {
+function ChatColumn({currentChat}) {
     return (
         <div className="col-8 chat-wrapper px-0">
           <ChatHeader
-           mockUser={mockUser}
+           currentChat={currentChat}
           />
           <div className="scrollable-Area p-3 row mx-0">
             <ChatCard user={true} />
