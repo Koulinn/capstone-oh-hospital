@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-function ChatCard({user}) {
+function ChatCard({user, message}) {
     return (
         <Card sx={{ 
             maxWidth: '75%', 
@@ -12,8 +12,8 @@ function ChatCard({user}) {
             className='my-3'
             >
             <CardContent>
-                <p>messagakjsndlksan lkasjdlksjadlksj daslkjdk jsndkjasnkjdas kjdkjsand jsandkjsan dakjsndjasnj dakls dask dals da</p>
-                <span>15:55</span>
+                <p>{message.text}</p>
+                <span>{message.createdAt}</span>
             </CardContent>
             
         </Card>

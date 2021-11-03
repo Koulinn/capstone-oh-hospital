@@ -1,36 +1,25 @@
 import React from 'react'
 import ChatCard from "../../components/Chat/ChatCard";
-import { MdOutlineChatBubbleOutline, MdSend, MdOutlineAttachment } from 'react-icons/md'
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ChatHeader from './ChatHeader';
 import ChatBottom from './ChatBottom';
 
-function ChatColumn({currentChat}) {
-    return (
-        <div className="col-8 chat-wrapper px-0">
-          <ChatHeader
-           currentChat={currentChat}
-          />
-          <div className="scrollable-Area p-3 row mx-0">
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard user={true} />
-            <ChatCard />
-            <ChatCard />
+function ChatColumn({ currentUserOnChat, currentMessageHistory }) {
+  return (
+    <div className="col-8 chat-wrapper px-0">
+      <ChatHeader
+        currentUserOnChat={currentUserOnChat}
+      />
+      <div className="scrollable-Area p-3 row mx-0">
+        {currentMessageHistory.map(m => <ChatCard
+          key={m._id}
+          message={m}
+          user={m.senderRole === 'user' ? true : false}
+        />)}
+      </div>
+      <ChatBottom roomID={currentUserOnChat?._id} />
 
-          </div>
-          <ChatBottom/>
-
-        </div>
-    )
+    </div>
+  )
 }
 
 export default ChatColumn
