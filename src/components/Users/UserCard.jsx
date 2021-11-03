@@ -5,12 +5,12 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 
-function UserCard({name, surname, avatar, user, setCurrentChat}) {
+function UserCard({name, surname, avatar, user, setcurrentUserOnChat}) {
     return (
         <>
-            <ListItem onClick={()=>setCurrentChat(user)}>
+            <ListItem onClick={()=>setcurrentUserOnChat(user)}>
                 <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={avatar}>
+                  <Avatar alt={name} src={avatar}>
 
                   </Avatar>
                 </ListItemAvatar>

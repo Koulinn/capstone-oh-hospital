@@ -3,7 +3,7 @@ import List from '@mui/material/List';
 import UserCard from './UserCard'
 
 
-function UserList({ waitingList, setCurrentChat }) {
+function UserList({ waitingList, setcurrentUserOnChat }) {
     return (
         <List
             sx={{
@@ -14,11 +14,12 @@ function UserList({ waitingList, setCurrentChat }) {
         >
             {waitingList.map(u =>
                 <UserCard
+                key={u._id}
                     user={u.user}
                     name={u.user.name}
                     surname={u.user.surname}
                     avatar={u.user.avatar}
-                    setCurrentChat={setCurrentChat}
+                    setcurrentUserOnChat={setcurrentUserOnChat}
                 />)}
         </List>
     )
