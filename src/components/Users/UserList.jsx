@@ -14,9 +14,9 @@ function UserList({ waitingList }) {
         >
             {waitingList.map(u =>
                 <UserCard
-                    name={u.name}
-                    surname={u.surname}
-                    avatar={u.avatar}
+                    name={u.user.name}
+                    surname={u.user.surname}
+                    avatar={u.user.avatar}
                 />)}
         </List>
     )

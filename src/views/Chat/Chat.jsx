@@ -32,7 +32,7 @@ const mockUser = {
   googleId: "114978369901583530553",
   phone_primary: "7895144568",
 };
-const waitingList = [mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser,]
+// const waitingList = [mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser,]
 
 // Get list of waiting users
 // Open chat
@@ -43,6 +43,7 @@ const mockMessage = {
 }
 function Chat() {
   const [roomId, setRoomId] = useState(null)
+  const [waitingList, setWaitingUsers] = useState([])
 
 
 
@@ -51,6 +52,8 @@ function Chat() {
     });
 
     const updateUserList = (payload) => {
+      setWaitingUsers([...waitingList,...payload])
+      console.log(payload)
 
     }
     const onUserChat = (payload) => {
@@ -66,6 +69,8 @@ function Chat() {
 
     socket.on("waitingUsers", updateUserList)
     socket.on("onUserChat", onUserChat)
+
+    logOnChats(mockAssistant)
 
     return () => {
       socket.off("waitingUsers", updateUserList)
