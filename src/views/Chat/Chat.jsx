@@ -23,50 +23,32 @@ const mockAssistant = {
   avatar: "https://ui-avatars.com/api/?name=Mary Doe",
 };
 
-const mockUser = {
-  _id: '617edbbc25fbe2e8d7fa795d',
-  name: "Rafael",
-  surname: "Limaa",
-  avatar: "https://res.cloudinary.com/koulin/image/upload/v1635704994/OneHealth/patient/avatar/ti7wxty5xc2znimy34ca.png",
-  email: "drdverzola@gmail.com",
-  googleId: "114978369901583530553",
-  phone_primary: "7895144568",
-};
-// const waitingList = [mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser, mockUser,]
-
-// Get list of waiting users
-// Open chat
-const mockMessage = {
-  senderID: '617fc01dd1832ee3bb069737',
-  senderRole: 'assistant',
-  text: `I'm patatine hello!`,
-}
 function Chat() {
   const [roomId, setRoomId] = useState(null)
   const [waitingList, setWaitingUsers] = useState([])
-  const [currentChat, setCurrentChat] = useState(null)
+  const [currentUserOnChat, setcurrentUserOnChat] = useState(null)
+  const [currentMessageHistory, setCurrentMessageHistory] = useState([])
 
 
+  const updateChatMessages = (payload) => {
+
+    console.log(currentMessageHistory, ' Before set current message history')
+    setCurrentMessageHistory([...currentMessageHistory, payload])
+    console.log('recipientMessage', payload)
+
+  }
 
   useEffect(() => {
     socket.on("connection", () => {
     });
 
     const updateUserList = (payload) => {
-      setWaitingUsers([...waitingList,...payload])
-      console.log(payload)
-
+      setWaitingUsers([...waitingList, ...payload])
     }
     const onUserChat = (payload) => {
       const { roomID } = payload
       setRoomId(roomID.toString())
     }
-
-    const updateChatMessages = (payload) => {
-      console.log('recipientMessage', payload)
-
-    }
-    socket.on('recipientMessage', updateChatMessages)
 
     socket.on("waitingUsers", updateUserList)
     socket.on("onUserChat", onUserChat)
@@ -76,10 +58,22 @@ function Chat() {
     return () => {
       socket.off("waitingUsers", updateUserList)
       socket.off("onUserChat", onUserChat)
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentUserOnChat) {
+      openChatWithUser(currentUserOnChat)
+    }
+  }, [currentUserOnChat])
+
+
+  useEffect(() => {
+    socket.on('recipientMessage', updateChatMessages)
+    return () => {
       socket.off('recipientMessage', updateChatMessages)
     }
-
-  }, []);
+  }, [currentMessageHistory])
 
   const logOnChats = (assistant) => {
     socket.emit("newAssistant", assistant);
@@ -92,26 +86,14 @@ function Chat() {
     socket.emit("openRoomWithUser", payload);
   };
 
-  const sendMessage = (message, roomID) => {
-    const payload = {
-      message,
-      roomID: roomID
-    }
-    socket.emit('newMessage', payload)
-  }
-
-
-  // <button onClick={() => logOnChats(mockAssistant)}>Check user waiting List</button>
-  // <button onClick={() => openChatWithUser(mockUser)}>Open chat with user</button>
-  // <button onClick={() => sendMessage(mockMessage, roomId)}>Send message</button>
   return (
     <Container className="box-shadow mt-5" >
       <Row>
-        <UserQueueColumn 
-        waitingList={waitingList}
-        setCurrentChat={setCurrentChat}
+        <UserQueueColumn
+          waitingList={waitingList}
+          setcurrentUserOnChat={setcurrentUserOnChat}
         />
-        <ChatColumn currentChat={currentChat}/>
+        <ChatColumn currentMessageHistory={currentMessageHistory} currentUserOnChat={currentUserOnChat} />
       </Row>
 
     </Container>
