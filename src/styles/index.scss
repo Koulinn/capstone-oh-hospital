@@ -7,6 +7,12 @@ html {
   }
 }
 
+//=========== SASS VARIABLES ===========
+$PRIMARY-COLOR-0: #1b3e91;
+$PRIMARY-COLOR-1: #4f7fd1;
+$PRIMARY-COLOR-2: #21a8e1;
+$PRIMARY-COLOR-3: #0096d93d;
+
 .box-shadow {
   background: #ffffff;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.15);
@@ -47,8 +53,40 @@ html {
   }
 }
 
+.waitingList-wrapper{
+  flex-grow: 1;
+}
 .userQueue-wrapper{
   h4{
-    line-height: 31px;
+    line-height: 24px;
+  }
+}
+
+.chatInput-wrapper{
+  background-color: $PRIMARY-COLOR-3;
+  .text-area-wrapper{
+    flex-grow: 1;
+  }
+  .sendAttachment-Btn-wrapper {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    label{
+      cursor: pointer;
+    }
+    svg{
+      height: 24px;
+      width: 24px;
+      transform: rotate(90deg);
+    }
+  }
+  .sendMessage-Btn-wrapper{
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    svg{
+      height: 32px;
+      width: 32px;
+    }
   }
 }

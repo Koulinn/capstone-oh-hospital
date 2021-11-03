@@ -35,5 +35,30 @@ html {
 .chat-wrapper .chatUserMeta-wrapper {
   background-color: #aca9a9; }
 
+.waitingList-wrapper {
+  flex-grow: 1; }
+
 .userQueue-wrapper h4 {
-  line-height: 31px; }
+  line-height: 24px; }
+
+.chatInput-wrapper {
+  background-color: #0096d93d; }
+  .chatInput-wrapper .text-area-wrapper {
+    flex-grow: 1; }
+  .chatInput-wrapper .sendAttachment-Btn-wrapper {
+    cursor: pointer;
+    width: 32px;
+    height: 32px; }
+    .chatInput-wrapper .sendAttachment-Btn-wrapper label {
+      cursor: pointer; }
+    .chatInput-wrapper .sendAttachment-Btn-wrapper svg {
+      height: 24px;
+      width: 24px;
+      transform: rotate(90deg); }
+  .chatInput-wrapper .sendMessage-Btn-wrapper {
+    cursor: pointer;
+    width: 48px;
+    height: 48px; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper svg {
+      height: 32px;
+      width: 32px; }

@@ -9,7 +9,7 @@ function ChatCard({user}) {
             marginLeft: (user ? '0px' : 'auto'), 
             backgroundColor: (user ? '#0096d93d' : '#b7b9c35d')
             }}
-            className="my-3"
+            className='my-3'
             >
             <CardContent>
                 <p>messagakjsndlksan lkasjdlksjadlksj daslkjdk jsndkjasnkjdas kjdkjsand jsandkjsan dakjsndjasnj dakls dask dals da</p>

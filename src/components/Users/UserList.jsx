@@ -2,7 +2,8 @@ import React from 'react'
 import List from '@mui/material/List';
 import UserCard from './UserCard'
 
-function UserList({ userWaitingList }) {
+
+function UserList({ waitingList }) {
     return (
         <List
             sx={{
@@ -11,7 +12,7 @@ function UserList({ userWaitingList }) {
                 bgcolor: 'background.paper',
             }}
         >
-            {userWaitingList.map(u =>
+            {waitingList.map(u =>
                 <UserCard
                     name={u.name}
                     surname={u.surname}
