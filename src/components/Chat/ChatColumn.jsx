@@ -14,6 +14,7 @@ function ChatColumn({ currentUserOnChat, currentMessageHistory }) {
           key={m._id}
           message={m}
           user={m.senderRole === 'user' ? true : false}
+          img={m.files || null}
         />)}
       </div>
       <ChatBottom roomID={currentUserOnChat?._id} />
