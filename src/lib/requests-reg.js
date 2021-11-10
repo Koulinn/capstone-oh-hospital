@@ -1,5 +1,10 @@
+import axios from 'axios'
+
 const CLOUD_PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 const CLOUD_NAME = process.env.REACT_APP_CLOUDINARY_NAME
+const BASE_URL= process.env.REACT_APP_API_URL
+
+
 
 
 const uploadCloudinary = async (file)=>{
@@ -25,8 +30,27 @@ const uploadCloudinary = async (file)=>{
     }
 }
 
+const getUnconfirmedRequests =async()=>{
+  try {
+    const res = await axios.get(`${BASE_URL}/hospital/medicalRequests`)
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+const getNewestUsers =async()=>{
+  try {
+    const res = await axios.get(`${BASE_URL}/hospital/user`)
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const requests_reg ={
     uploadCloudinary:uploadCloudinary,
+    getUnconfirmedRequests:getUnconfirmedRequests,
+    getNewestUsers:getNewestUsers
 
 }
 
