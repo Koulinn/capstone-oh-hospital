@@ -1,8 +1,8 @@
-import { Grid, Typography, Container } from '@mui/material'
-import { Box } from '@mui/system'
+import { Grid, Container } from '@mui/material'
 import React, { useState, useEffect } from 'react'
-import UserCard from '../../components/Users/UserCard'
+import UserListDashboard from '../../components/Users/UserListDashboard'
 import lib from '../../lib'
+import TabsControl from '../../components/DashboardTabs/TabsControl'
 
 
 const { requests_reg } = lib
@@ -12,6 +12,7 @@ const { getUnconfirmedRequests, getNewestUsers } = requests_reg
 function Dashboard() {
     const [unconfirmedRequests, setUnconfirmedRequests] = useState([])
     const [newestUsers, setNewestUsers] = useState([])
+    const [userID, setUserID] = useState(null)
 
     const asyncWrapper = async () => {
         try {
@@ -36,24 +37,19 @@ function Dashboard() {
         asyncWrapper()
     }, [])
     return (
-        <Container maxWidth="xl">
-            <Grid>
-                <Grid item xs={4}>
-                    <Typography variant='h4' className="pl-3 mb-3">Newest members</Typography>
-                    <Box>
-                        {newestUsers.map((u, i) => <UserCard
-                            key={i}
-                            user={u}
-                            name={u.name}
-                            surname={u.surname}
-                            avatar={u.avatar}
-                            createdAt={u.createdAt}
-                        />
-                        )
-                        }
-                    </Box>
+        <Container maxWidth="xl" spacing={2}>
+            <Grid container spacing={2}>
+                <UserListDashboard
+                    newestUsers={newestUsers}
+                    setUserID={setUserID}
+                />
+
+
+                <Grid item xs={9}>
+                    <TabsControl userID={userID?._id} />
                 </Grid>
             </Grid>
+
         </Container>
     )
 }
