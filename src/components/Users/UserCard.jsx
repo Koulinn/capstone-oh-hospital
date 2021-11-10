@@ -4,17 +4,19 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
+import {format} from 'date-fns'
 
-function UserCard({name, surname, avatar, user, setcurrentUserOnChat}) {
+function UserCard({name, surname, avatar, user, setcurrentUserOnChat, createdAt}) {
+  console.log(createdAt)
     return (
         <>
-            <ListItem onClick={()=>setcurrentUserOnChat(user)}>
+            <ListItem onClick={()=>setcurrentUserOnChat(user)} className="cursor-pointer">
                 <ListItemAvatar>
                   <Avatar alt={name} src={avatar}>
 
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={`${name} ${surname}`} secondary="Jan 9, 2014" />
+                <ListItemText primary={`${name} ${surname}`} secondary={`Since: ${format(new Date(createdAt), 'PP')}`} />
               </ListItem>
               <Divider variant="inset" component="li" />
         </>

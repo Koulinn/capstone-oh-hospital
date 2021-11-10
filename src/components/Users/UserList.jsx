@@ -14,11 +14,12 @@ function UserList({ waitingList, setcurrentUserOnChat }) {
         >
             {waitingList.map(u =>
                 <UserCard
-                key={u._id}
+                    key={u._id}
                     user={u.user}
                     name={u.user.name}
                     surname={u.user.surname}
                     avatar={u.user.avatar}
+                    createdAt={u.user.createdAt}
                     setcurrentUserOnChat={setcurrentUserOnChat}
                 />)}
         </List>
