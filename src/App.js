@@ -2,6 +2,8 @@ import { io } from 'socket.io-client'
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Chat from './views/Chat/Chat';
 import {Container} from 'react-bootstrap'
+import Dashboard from './views/Dashboard/Dashboard';
+import NavigationBar from './components/Navigation/NavigationBar';
 
 
 
@@ -15,9 +17,13 @@ function App() {
     <Container fluid>
 
       <Router>
+      <NavigationBar/>
 
-        <Route path="/" exact render={(routerProps) =>
+        <Route path="/chat" exact render={(routerProps) =>
           <Chat {...routerProps} />}>
+        </Route>
+        <Route path="/" exact render={(routerProps) =>
+          <Dashboard {...routerProps} />}>
         </Route>
       </Router>
     </Container>
