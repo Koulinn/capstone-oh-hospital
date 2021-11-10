@@ -46,11 +46,20 @@ const getNewestUsers =async()=>{
     console.log(error)
   }
 }
+const getUserData =async(query, userID)=>{
+  try {
+    const res = await axios.get(`${BASE_URL}/hospital/user?${query}=${userID}`)
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const requests_reg ={
     uploadCloudinary:uploadCloudinary,
     getUnconfirmedRequests:getUnconfirmedRequests,
-    getNewestUsers:getNewestUsers
+    getNewestUsers:getNewestUsers,
+    getUserData:getUserData
 
 }
 
