@@ -10,12 +10,14 @@ function ChatColumn({ currentUserOnChat, currentMessageHistory }) {
         currentUserOnChat={currentUserOnChat}
       />
       <div className="scrollable-Area p-3 row mx-0">
-        {currentMessageHistory.map(m => <ChatCard
-          key={m._id}
-          message={m}
-          user={m.senderRole === 'user' ? true : false}
-          img={m.files || null}
-        />)}
+        <div className="w-100">
+          {currentMessageHistory.map(m => <ChatCard
+            key={m._id}
+            message={m}
+            user={m.senderRole === 'user' ? true : false}
+            img={m.files || null}
+          />)}
+        </div>
       </div>
       <ChatBottom roomID={currentUserOnChat?._id} />
 

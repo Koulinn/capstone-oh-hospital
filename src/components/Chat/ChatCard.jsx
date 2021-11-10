@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import {format} from 'date-fns'
 
 function ChatCard({user, message, img}) {
     return (
@@ -21,7 +22,7 @@ function ChatCard({user, message, img}) {
                     : ''
                 }
                 <p>{message.text}</p>
-                <span>{message.createdAt}</span>
+                <span style={{textAlign:'right'}}>{format(new Date(message.createdAt), 'HH:mm')}</span>
             </CardContent>
             
         </Card>

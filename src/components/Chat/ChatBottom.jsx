@@ -3,6 +3,7 @@ import { MdSend, MdOutlineAttachment } from 'react-icons/md'
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { socket } from '../../views/Chat/Chat'
 import lib from '../../lib';
+import { IconButton } from '@mui/material';
 
 const { requests_reg } = lib
 const { uploadCloudinary } = requests_reg
@@ -36,13 +37,14 @@ function ChatBottom({ roomID }) {
     }
     socket.emit('newMessage', payload)
     setImgPreview(null)
+    document.getElementById('chatForm').reset()
   }
 
 
 
   return (
 
-    <form className="chatInput-wrapper d-flex align-items-center p-3" onSubmit={sendMessage}>
+    <form id='chatForm' className="chatInput-wrapper d-flex align-items-center p-3" onSubmit={sendMessage}>
       {imgPreview ? <img src={imgPreview} alt="" /> : ''}
       <TextareaAutosize
         className="text-area-wrapper"
@@ -60,7 +62,9 @@ function ChatBottom({ roomID }) {
         <input type="file" id="fileField" className="d-none" />
       </div>
       <div className="sendMessage-Btn-wrapper d-flex justify-content-center align-items-center my-3 ml-3">
-        <button type="submit"><MdSend /></button>
+        <IconButton type="submit">
+          <MdSend />
+        </IconButton>
       </div>
     </form>
 
