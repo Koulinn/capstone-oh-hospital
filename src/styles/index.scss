@@ -48,6 +48,7 @@ $CHAT-BG: #ededf3;
     img {
       height: 180px;
       object-fit: cover;
+      max-width: -webkit-fill-available;
     }
   }
 }

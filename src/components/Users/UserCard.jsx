@@ -7,7 +7,6 @@ import Divider from '@mui/material/Divider';
 import {format} from 'date-fns'
 
 function UserCard({name, surname, avatar, user, setcurrentUserOnChat, createdAt}) {
-  console.log(createdAt)
     return (
         <>
             <ListItem onClick={()=>setcurrentUserOnChat(user)} className="cursor-pointer">

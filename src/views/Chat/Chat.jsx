@@ -87,7 +87,7 @@ function Chat() {
   };
 
   return (
-    <Container className="box-shadow mt-5" >
+    <Container className="box-shadow my-5" >
       <Row>
         <UserQueueColumn
           waitingList={waitingList}
