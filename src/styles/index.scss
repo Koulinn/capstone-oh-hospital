@@ -8,11 +8,23 @@ html {
   }
 }
 
+li{
+  list-style: none;
+}
+
+p {
+  margin: 0px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
 //=========== SASS VARIABLES ===========
-$PRIMARY-COLOR-0: #1b3e91;
-$PRIMARY-COLOR-1: #4f7fd1;
+$PRIMARY-COLOR-0: #007bff;
+$PRIMARY-COLOR-1: #0069d9;
 $PRIMARY-COLOR-2: #21a8e1;
 $PRIMARY-COLOR-3: #0096d93d;
+$CHAT-BG: #ededf3;
 
 .box-shadow {
   background: #ffffff;
@@ -26,6 +38,18 @@ $PRIMARY-COLOR-3: #0096d93d;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
+
+  .MuiCardContent-root {
+    padding-bottom: 8px !important;
+  }
+
+  .MuiPaper-root {
+    width: fit-content;
+    img {
+      height: 180px;
+      object-fit: cover;
+    }
+  }
 }
 
 /* width */
@@ -50,7 +74,9 @@ $PRIMARY-COLOR-3: #0096d93d;
 
 .chat-wrapper {
   .chatUserMeta-wrapper {
-    background-color: rgb(172, 169, 169);
+    height: 78px;
+    background-color: $PRIMARY-COLOR-0;
+    color: white;
   }
 }
 
@@ -58,13 +84,15 @@ $PRIMARY-COLOR-3: #0096d93d;
   flex-grow: 1;
 }
 .userQueue-wrapper {
+  header {
+    height: 78px;
+  }
   h4 {
-    line-height: 24px;
   }
 }
 
 .chatInput-wrapper {
-  background-color: $PRIMARY-COLOR-3;
+  background-color: $CHAT-BG;
   img {
     height: 78px;
     object-fit: cover;
@@ -93,6 +121,24 @@ $PRIMARY-COLOR-3: #0096d93d;
     svg {
       height: 32px;
       width: 32px;
+    }
+    .MuiButtonBase-root {
+      transition: all 0.7s;
+    }
+    .MuiButtonBase-root:hover {
+      background-color: $PRIMARY-COLOR-0;
+      color: white;
+    }
+  }
+}
+
+#topNavigation {
+  .logo {
+    cursor: pointer;
+    font-size: 2.25rem;
+    font-family: "Raleway", sans-serif;
+    img {
+      height: 80px;
     }
   }
 }

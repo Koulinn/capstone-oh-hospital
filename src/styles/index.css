@@ -5,6 +5,15 @@ html {
   html h2 {
     font-family: "Raleway", sans-serif; }
 
+li {
+  list-style: none; }
+
+p {
+  margin: 0px; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
 .box-shadow {
   background: #ffffff;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.15);
@@ -16,6 +25,13 @@ html {
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap; }
+  .scrollable-Area .MuiCardContent-root {
+    padding-bottom: 8px !important; }
+  .scrollable-Area .MuiPaper-root {
+    width: fit-content; }
+    .scrollable-Area .MuiPaper-root img {
+      height: 180px;
+      object-fit: cover; }
 
 /* width */
 ::-webkit-scrollbar {
@@ -34,16 +50,18 @@ html {
   background: #555; }
 
 .chat-wrapper .chatUserMeta-wrapper {
-  background-color: #aca9a9; }
+  height: 78px;
+  background-color: #007bff;
+  color: white; }
 
 .waitingList-wrapper {
   flex-grow: 1; }
 
-.userQueue-wrapper h4 {
-  line-height: 24px; }
+.userQueue-wrapper header {
+  height: 78px; }
 
 .chatInput-wrapper {
-  background-color: #0096d93d; }
+  background-color: #ededf3; }
   .chatInput-wrapper img {
     height: 78px;
     object-fit: cover;
@@ -67,3 +85,15 @@ html {
     .chatInput-wrapper .sendMessage-Btn-wrapper svg {
       height: 32px;
       width: 32px; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper .MuiButtonBase-root {
+      transition: all 0.7s; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper .MuiButtonBase-root:hover {
+      background-color: #007bff;
+      color: white; }
+
+#topNavigation .logo {
+  cursor: pointer;
+  font-size: 2.25rem;
+  font-family: "Raleway", sans-serif; }
+  #topNavigation .logo img {
+    height: 80px; }
