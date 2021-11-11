@@ -3,6 +3,7 @@ import { Navbar } from "react-bootstrap";
 import { withRouter } from "react-router";
 import Avatar from '@mui/material/Avatar';
 import { Typography } from "@mui/material";
+import Badge from '@mui/material/Badge';
 
 
 const logoURL =
@@ -10,7 +11,7 @@ const logoURL =
 
 const avatar = `https://cdn1.vectorstock.com/i/thumb-large/44/35/receptionist-girl-vector-11694435.jpg`
 
-function NavigationBar({ history }) {
+function NavigationBar({ history, chatUsers }) {
 
  
 
@@ -31,13 +32,14 @@ function NavigationBar({ history }) {
         onClick={() => changeHistory("/")}
       >
         <img src={logoURL} className="py-3 pr-3" alt="logo" />
-        <>OneHealth</>
+        <>OneHospital</>
       </div>
 
      
-        <div className="d-flex justify-content-center"
+        <div className="d-flex justify-content-center align-items-center"
         >
-
+          {/* <Badge color="secondary" badgeContent={chatUsers} className="mr-3" showZero><Typography variant='h6' onClick={()=> history.push('chat')} className="mr-3 cursor-pointer" >Chat</Typography></Badge> */}
+          <Typography variant='h6' onClick={()=> history.push('chat')} className="mr-3 cursor-pointer" >Chat</Typography>
           <Avatar data-hj-suppress src={avatar} alt={'Valery Kashina'} className="cursor-pointer" />
           <Typography data-hj-suppress className="d-none ml-3 d-md-flex align-items-center cursor-pointer">{`Valery Kashina`}</Typography>
 
