@@ -23,7 +23,7 @@ const mockAssistant = {
   avatar: "https://ui-avatars.com/api/?name=Mary Doe",
 };
 
-function Chat() {
+function Chat({setChatUsers}) {
   const [roomId, setRoomId] = useState(null)
   const [waitingList, setWaitingUsers] = useState([])
   const [currentUserOnChat, setcurrentUserOnChat] = useState(null)
@@ -31,11 +31,7 @@ function Chat() {
 
 
   const updateChatMessages = (payload) => {
-
-    console.log(currentMessageHistory, ' Before set current message history')
     setCurrentMessageHistory([...currentMessageHistory, payload])
-    console.log('recipientMessage', payload)
-
   }
 
   useEffect(() => {
@@ -66,6 +62,9 @@ function Chat() {
       openChatWithUser(currentUserOnChat)
     }
   }, [currentUserOnChat])
+  useEffect(() => {
+    setChatUsers(waitingList.length)
+  }, [waitingList])
 
 
   useEffect(() => {
