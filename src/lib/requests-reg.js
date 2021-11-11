@@ -55,11 +55,22 @@ const getUserData =async(query, userID)=>{
   }
 }
 
+const confirmMedicalRequest = async (medicalRequestID, body)=>{
+  try {
+    const res = await axios.put(`${BASE_URL}/hospital/medicalRequests/${medicalRequestID}`, body)
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+  
+}
+
 const requests_reg ={
     uploadCloudinary:uploadCloudinary,
     getUnconfirmedRequests:getUnconfirmedRequests,
     getNewestUsers:getNewestUsers,
-    getUserData:getUserData
+    getUserData:getUserData,
+    confirmMedicalRequest:confirmMedicalRequest
 
 }
 
