@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import lib from '../../lib';
+import PersonalData from '../DashboardDisplay/PersonalData';
 const{requests_reg} = lib
 const{getUserData} = requests_reg
 
@@ -39,11 +40,7 @@ function PersonalDataTab({ children, value, index, userID, ...other }) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && userData && <PersonalData userData={userData} isLoading={isLoading}/>}
     </div>
     )
 }
