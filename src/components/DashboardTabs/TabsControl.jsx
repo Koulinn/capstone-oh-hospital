@@ -24,17 +24,17 @@ export default function TabsControl({userID}) {
   };
 
   return (
-    <Box sx={{ width: 'auto' }}>
+    <Box sx={{ width: 'auto', paddingRight:'16px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Member" {...a11yProps(0)} />
           <Tab label="Medical requests" {...a11yProps(1)} />
-          <Tab label="Chat history" {...a11yProps(2)} />
+          {/* <Tab label="Chat history" {...a11yProps(2)} /> */}
         </Tabs>
       </Box>
       <PersonalDataTab userID={userID} value={value} index={0}/>
       <MedicalRequestTab userID={userID} value={value} index={1}/>
-      <ChatHistoryTab userID={userID} value={value} index={2} />
+      {/* <ChatHistoryTab userID={userID} value={value} index={2} /> */}
     </Box>
   );
 }
