@@ -91,6 +91,7 @@ function Chat({setChatUsers}) {
         <UserQueueColumn
           waitingList={waitingList}
           setcurrentUserOnChat={setcurrentUserOnChat}
+          currentUserOnChat={currentUserOnChat}
         />
         <ChatColumn currentMessageHistory={currentMessageHistory} currentUserOnChat={currentUserOnChat} />
       </Row>

@@ -42,6 +42,7 @@ function Dashboard() {
                 <UserListDashboard
                     newestUsers={newestUsers}
                     setUserID={setUserID}
+                    userID={userID}
                 />
 
 

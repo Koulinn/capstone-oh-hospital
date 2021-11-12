@@ -6,10 +6,10 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import {format} from 'date-fns'
 
-function UserCard({name, surname, avatar, user, setcurrentUserOnChat, createdAt}) {
+function UserCard({name, surname, avatar, user, setcurrentUserOnChat, createdAt, isSelected}) {
     return (
         <>
-            <ListItem onClick={()=>setcurrentUserOnChat(user)} className="cursor-pointer">
+            <ListItem onClick={()=>setcurrentUserOnChat(user)} className={"cursor-pointer" + (isSelected ? ' Mui-selected' : '')}>
                 <ListItemAvatar>
                   <Avatar alt={name} src={avatar}>
 

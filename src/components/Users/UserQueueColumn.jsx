@@ -1,7 +1,7 @@
 import React from 'react'
 import UserList from './UserList'
 
-function UserQueueColumn({waitingList, setcurrentUserOnChat}) {
+function UserQueueColumn({waitingList, setcurrentUserOnChat, currentUserOnChat}) {
     return (
         <div className="userQueue-wrapper d-flex flex-column col-4 border-right px-0">
           <div className="">
@@ -13,6 +13,7 @@ function UserQueueColumn({waitingList, setcurrentUserOnChat}) {
             <UserList
              waitingList={waitingList}
              setcurrentUserOnChat={setcurrentUserOnChat}
+             currentUserOnChat={currentUserOnChat}
             />
           </div>
         </div>

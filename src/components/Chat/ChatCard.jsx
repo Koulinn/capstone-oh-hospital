@@ -6,7 +6,7 @@ import {format} from 'date-fns'
 function ChatCard({user, message, img}) {
     return (
         <Card sx={{ 
-            maxWidth: '75%', 
+            maxWidth: '75%',
             marginLeft: (user ? '0px' : 'auto'), 
             backgroundColor: (user ? '#0096d93d' : '#b7b9c35d')
             }}
