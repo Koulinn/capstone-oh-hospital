@@ -2,8 +2,148 @@
 
 html {
   font-family: "Mulish", sans-serif;
-  h1, h2 {
+  h1,
+  h2 {
     font-family: "Raleway", sans-serif;
   }
 }
 
+li{
+  list-style: none;
+}
+
+p {
+  margin: 0px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+//=========== SASS VARIABLES ===========
+$PRIMARY-COLOR-0: #007bff;
+$PRIMARY-COLOR-1: #0069d9;
+$PRIMARY-COLOR-2: #21a8e1;
+$PRIMARY-COLOR-3: #0096d93d;
+$CHAT-BG: #ededf3;
+
+.box-shadow {
+  background: #ffffff;
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.scrollable-Area {
+  height: 640px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+
+  .MuiCardContent-root {
+    padding-bottom: 8px !important;
+  }
+
+  .MuiPaper-root {
+    width: fit-content;
+    img {
+      height: 180px;
+      object-fit: cover;
+      max-width: -webkit-fill-available;
+    }
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.chat-wrapper {
+  .chatUserMeta-wrapper {
+    height: 78px;
+    background-color: $PRIMARY-COLOR-0;
+    color: white;
+  }
+}
+
+.userSelected{
+  
+}
+
+.waitingList-wrapper {
+  flex-grow: 1;
+}
+.userQueue-wrapper {
+  header {
+    height: 78px;
+  }
+  h4 {
+  }
+}
+
+.chatInput-wrapper {
+  background-color: $CHAT-BG;
+  img {
+    height: 78px;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  .text-area-wrapper {
+    flex-grow: 1;
+  }
+  .sendAttachment-Btn-wrapper {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    label {
+      cursor: pointer;
+    }
+    svg {
+      height: 24px;
+      width: 24px;
+      transform: rotate(90deg);
+    }
+  }
+  .sendMessage-Btn-wrapper {
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    svg {
+      height: 32px;
+      width: 32px;
+    }
+    .MuiButtonBase-root {
+      transition: all 0.7s;
+    }
+    .MuiButtonBase-root:hover {
+      background-color: $PRIMARY-COLOR-0;
+      color: white;
+    }
+  }
+}
+
+#topNavigation {
+  .logo {
+    cursor: pointer;
+    font-size: 2.25rem;
+    font-family: "Raleway", sans-serif;
+    img {
+      height: 80px;
+    }
+  }
+}

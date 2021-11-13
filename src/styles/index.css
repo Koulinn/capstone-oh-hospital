@@ -1,5 +1,99 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;700;800&family=Raleway:wght@300&display=swap");
 html {
   font-family: "Mulish", sans-serif; }
-  html h1, html h2 {
+  html h1,
+  html h2 {
     font-family: "Raleway", sans-serif; }
+
+li {
+  list-style: none; }
+
+p {
+  margin: 0px; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
+.box-shadow {
+  background: #ffffff;
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  overflow: hidden; }
+
+.scrollable-Area {
+  height: 640px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap; }
+  .scrollable-Area .MuiCardContent-root {
+    padding-bottom: 8px !important; }
+  .scrollable-Area .MuiPaper-root {
+    width: fit-content; }
+    .scrollable-Area .MuiPaper-root img {
+      height: 180px;
+      object-fit: cover; }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }
+
+.chat-wrapper .chatUserMeta-wrapper {
+  height: 78px;
+  background-color: #007bff;
+  color: white; }
+
+.waitingList-wrapper {
+  flex-grow: 1; }
+
+.userQueue-wrapper header {
+  height: 78px; }
+
+.chatInput-wrapper {
+  background-color: #ededf3; }
+  .chatInput-wrapper img {
+    height: 78px;
+    object-fit: cover;
+    margin-right: 1rem; }
+  .chatInput-wrapper .text-area-wrapper {
+    flex-grow: 1; }
+  .chatInput-wrapper .sendAttachment-Btn-wrapper {
+    cursor: pointer;
+    width: 32px;
+    height: 32px; }
+    .chatInput-wrapper .sendAttachment-Btn-wrapper label {
+      cursor: pointer; }
+    .chatInput-wrapper .sendAttachment-Btn-wrapper svg {
+      height: 24px;
+      width: 24px;
+      transform: rotate(90deg); }
+  .chatInput-wrapper .sendMessage-Btn-wrapper {
+    cursor: pointer;
+    width: 48px;
+    height: 48px; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper svg {
+      height: 32px;
+      width: 32px; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper .MuiButtonBase-root {
+      transition: all 0.7s; }
+    .chatInput-wrapper .sendMessage-Btn-wrapper .MuiButtonBase-root:hover {
+      background-color: #007bff;
+      color: white; }
+
+#topNavigation .logo {
+  cursor: pointer;
+  font-size: 2.25rem;
+  font-family: "Raleway", sans-serif; }
+  #topNavigation .logo img {
+    height: 80px; }
