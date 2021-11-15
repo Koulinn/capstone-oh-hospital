@@ -46,6 +46,7 @@ $CHAT-BG: #ededf3;
   .MuiPaper-root {
     width: fit-content;
     img {
+      width: 100%;
       height: 180px;
       object-fit: cover;
       max-width: -webkit-fill-available;
