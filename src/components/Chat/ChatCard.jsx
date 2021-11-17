@@ -12,7 +12,7 @@ function ChatCard({user, message, img}) {
             }}
             className='my-3'
             >
-            <CardContent>
+            <CardContent className="d-flex flex-column">
             {img ?
                     <img
                         className="mb-2"
@@ -21,8 +21,8 @@ function ChatCard({user, message, img}) {
                     />
                     : ''
                 }
-                <p>{message.text}</p>
-                <span style={{textAlign:'right'}}>{format(new Date(message.createdAt), 'HH:mm')}</span>
+                <p style={{lineBreak: 'anywhere'}}>{message.text}</p>
+                <span className={(user? '' : 'align-self-end')}>{format(new Date(message.createdAt), 'HH:mm')}</span>
             </CardContent>
             
         </Card>
